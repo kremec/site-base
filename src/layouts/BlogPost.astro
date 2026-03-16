@@ -13,14 +13,15 @@ const { title, description, series, partInSeries, publishedAt } = Astro.props;
   title={`${title} | ${SITE_TITLE} | Blog`}
   description={description}
   heading={title}
+  subheading={`${series} - Part ${partInSeries}\n${publishedAt.toLocaleDateString(
+    "en-si",
+    {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    },
+  )}`}
 >
-  <span transition:name={`${title} ${publishedAt}`}>
-    <FormattedDate date={publishedAt} />
-  </span>
-  <div class="py-1"></div>
-  <div class="py-3"></div>
-  <hr />
-  <div class="py-3"></div>
   <article class="prose">
     <slot />
   </article>
