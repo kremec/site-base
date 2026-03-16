@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { SITE_TITLE } from "@/const/names";
+import Page from "@/layouts/Page.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, series, partInSeries, publishedAt } = Astro.props;
+---
+
+<Page
+  title={`${title} | ${SITE_TITLE} | Blog`}
+  description={description}
+  heading={title}
+>
+  <span transition:name={`${title} ${publishedAt}`}>
+    <FormattedDate date={publishedAt} />
+  </span>
+  <div class="py-1"></div>
+  <div class="py-3"></div>
+  <hr />
+  <div class="py-3"></div>
+  <article class="prose">
+    <slot />
+  </article>
+</Page>

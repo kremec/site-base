@@ -1,0 +1,27 @@
+---
+import { SITE_TITLE } from "@/const/names";
+import {
+  GITHUB_LINK,
+  ANDROID_LINK,
+  YOUTUBE_LINK,
+  LINKEDIN_LINK,
+  EMAIL_LINK,
+} from "@/const/links";
+import HeaderExternalLink from "@/components/HeaderExternalLink.astro";
+import HeaderInternalLink from "@/components/HeaderInternalLink.astro";
+---
+
+<nav class="flex flex-col items-start gap-y-2">
+  <a href="/"><h1 class="text-2xl font-bold">{SITE_TITLE}</h1></a>
+  <div class="py-1"></div>
+  <HeaderInternalLink href="/portfolio" label="Portfolio" />
+  <HeaderInternalLink href="/blog" label="Blog" />
+  <HeaderInternalLink href="/notes" label="Notes" />
+  <HeaderInternalLink href="/rss.xml" label="RSS" />
+  <div class="py-2"></div>
+  <HeaderExternalLink href={GITHUB_LINK} label="GitHub" />
+  <HeaderExternalLink href={ANDROID_LINK} label="Android" />
+  <HeaderExternalLink href={YOUTUBE_LINK} label="YouTube" />
+  <HeaderExternalLink href={LINKEDIN_LINK} label="LinkedIn" />
+  <HeaderExternalLink href={EMAIL_LINK} label="Email" />
+</nav>

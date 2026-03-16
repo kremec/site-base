@@ -1,0 +1,15 @@
+---
+import { SITE_TITLE } from "@/const/names";
+import Page from "@/layouts/Page.astro";
+import Content from "@/content/pages/portfolio.mdx";
+---
+
+<Page
+  title={`Portfolio | ${SITE_TITLE}`}
+  description="My portfolio"
+  heading="Portfolio"
+>
+  <article class="prose">
+    <Content />
+  </article>
+</Page>

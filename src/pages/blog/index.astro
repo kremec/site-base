@@ -1,0 +1,17 @@
+---
+import { SITE_TITLE } from "@/const/names";
+import Page from "@/layouts/Page.astro";
+import BlogPostList from "@/components/BlogPostList.astro";
+---
+
+<Page
+  title={`Blog | ${SITE_TITLE}`}
+  description="My personal blog"
+  heading="Blog"
+  subheading="This is a series of notes I've been taking on both personal experiences and
+  other resources I consume in my spare time, formalized into article-like
+  form. The notes will be updating over time, and with them the external
+  sources, which can be found below each article."
+>
+  <BlogPostList />
+</Page>

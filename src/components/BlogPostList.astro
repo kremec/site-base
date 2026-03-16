@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import BlogPostCard from "@/components/BlogPostCard.astro";
+
+const blogs = await getCollection("blog");
+
+const blogsBySeries = blogs.reduce(
+  (acc, blog) => {
+    if (!acc[blog.data.series]) {
+      acc[blog.data.series] = [];
+    }
+    acc[blog.data.series].push(blog);
+    return acc;
+  },
+  {} as Record<string, typeof blogs>,
+);
+
+const sortedBlogSeries = Object.keys(blogsBySeries).sort();
+
+sortedBlogSeries.forEach((series) => {
+  blogsBySeries[series].sort((a, b) => {
+    return (a.data.partInSeries ?? 0) - (b.data.partInSeries ?? 0);
+  });
+});
+---
+
+<ul class="flex flex-col items-center gap-y-5">
+  {sortedBlogSeries.length === 0 && <p>No posts yet</p>}
+  {
+    sortedBlogSeries.map((series) => (
+      <li class="w-full">
+        <h4 class="mb-4 text-xl font-bold">{series}</h4>
+        <ul class="flex flex-col items-center gap-y-5">
+          {blogsBySeries[series].map((post) => (
+            <li class="w-full">
+              <BlogPostCard {post} />
+            </li>
+          ))}
+        </ul>
+      </li>
+    ))
+  }
+</ul>

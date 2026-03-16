@@ -1,0 +1,16 @@
+---
+import { PROJECTS } from "@/const/projects";
+import ProjectCard from "@/components/ProjectCard.astro";
+---
+
+<div class="not-prose text-black">
+  <ul class="flex flex-col items-start gap-y-5">
+    {
+      PROJECTS.map((project) => (
+        <li class="w-full">
+          <ProjectCard {...project} />
+        </li>
+      ))
+    }
+  </ul>
+</div>
