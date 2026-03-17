@@ -1,8 +1,10 @@
 ---
 import Page from "@/layouts/Page.astro";
 import Content from "@/content/pages/index.mdx";
+import PostHog from "@/util/PostHog.astro";
 ---
 
+<PostHog />
 <Page heading="Home">
   <article class="prose">
     <Content />
